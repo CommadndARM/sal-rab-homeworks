@@ -18,17 +18,12 @@ function calcShipping(sum, min, shipping) {
 
     let shippingSum;
 
-    if(productsSum = 0) {    
-    } else {
-        shippingSum == 0; 
-    }
-    if(productsSum >= freeShippingMinSum) {
-    } else {
-        shippingSum == 0;
-    }
+    if (productsSum == 0 || productsSum >= freeShippingMinSum) {
+        shippingSum = 0;
+    } 
     if(productsSum < 0 && productsSum < freeShippingMinSum) {
-    } else {    
-        shippingSum == shippingPrice;
+      
+        shippingSum = shippingPrice;
     }
 
 
@@ -50,20 +45,11 @@ function calcDiscount(sum, min, discount) {
     // то присвойте discountSum значение discountPart процентов от productsSum,
     // иначе присвойте discountSum значение 0
 
-    let discountSum;
-
-    if(productsSum >= discountMinSum) {
-    } else {
-    discountSum == discountPart / 100 * productsSum;
-    }
-    if(productsSum < discountMinSum) {
-    } else {
-    discountSum == 0
-    }
+    let discountSum = productsSum >= discountMinSum ? discountPart / 100 * productsSum : 0;
 
     // Конец решения задания №2.2.
 
-    return discountSum;
+    return discountPrice;
 }
 
 function calcInvoice({sum, discountMinSum, discountPart, shippingFreeMinSum, shippingPrice}) {
@@ -76,21 +62,23 @@ function calcInvoice({sum, discountMinSum, discountPart, shippingFreeMinSum, shi
 
     // присвойте totalSum значение productsSum
     // уменьшите totalSum на discountSum
+    let totalSum;
+    totalSum = productsSum;
+    totalSum = totalSum - discountSum;
 
     let shippingSum = calcShipping(totalSum, shippingFreeMinSum, shippingPrice); // не изменяйте эту строку!!!
 
     // прибавьте к totalSum значение shippingSum
 
+    totalSum = totalSum + shippingSum;
+
     // создайте переменную freeShipping
     // запишите без использования if или любых других условий:
     // если shippingSum равно нулю, то freeShipping должна быть равна true, иначе freeShipping должна быть равна false
 
-    let totalSum;
-    totalSum = productsSum;
-    totalSum = totalSum - discountSum + shippingSum;
+   
 
-    let freeShipping;
-    (shippingSum == 0) ? freeShipping = true : freeShipping = false;
+    let freeShipping = shippingSum == 0;
 
     // Конец решения задачи №2.3.
 
