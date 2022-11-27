@@ -20,16 +20,14 @@ function calcShipping(sum, min, shipping) {
 
     if (productsSum == 0 || productsSum >= freeShippingMinSum) {
         shippingSum = 0;
-    } 
-    if(productsSum < 0 && productsSum < freeShippingMinSum) {
-      
+    } else {
         shippingSum = shippingPrice;
     }
 
 
     // Конец решения задания №2.1.
 
-    return shippingPrice;
+    return shippingSum;
 }
 
 function calcDiscount(sum, min, discount) {
@@ -49,7 +47,7 @@ function calcDiscount(sum, min, discount) {
 
     // Конец решения задания №2.2.
 
-    return discountPrice;
+    return discountSum;
 }
 
 function calcInvoice({sum, discountMinSum, discountPart, shippingFreeMinSum, shippingPrice}) {
